@@ -11783,7 +11783,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11865,14 +11865,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
 <span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
@@ -11946,9 +11946,9 @@ Standard deviation of prices: $165,171.13
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>No, with more number of rooms price has to increase</li>
-<li>Yes, if percentage of lower class workers is more, prices of the house will be less</li>
-<li>Yes, neighbourhood with lesser PTRATIO costs more</li>
+<li>No. House with more rooms will be costlier.</li>
+<li>Yes, if percentage of lower class workers is more, prices of the house will be less because of the social status.</li>
+<li>Yes, neighbourhood with lesser PTRATIO costs more.</li>
 </ul>
 
 </div>
@@ -12099,8 +12099,11 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong>
-Yes, predictions are almost near to the real values.</p>
+<p><strong>Answer:</strong></p>
+<ul>
+<li>Yes. </li>
+<li>Score is 0.923 which is closer to 1 means 90 percent of the variance in Y is predictable from X. Also the predicted values are very near to the real values.</li>
+</ul>
 
 </div>
 </div>
@@ -13735,7 +13738,7 @@ EzIs6RljjAkZlvSMMcaEDEt6xhhjQsb/A0YjiPql2c82AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>High bias</li>
+<li>High bias, score is very less for both testing and training curve.</li>
 <li>High Variance, huge gap between testing and training curve indicates high variance</li>
 </ul>
 
@@ -13828,9 +13831,18 @@ Grid search is technique to identify the best model when multiple parameters (hy
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>
-In k-fold cross-validation, dataset is divided into k folds, k-1 are used as training set and left out one is used as testing set. THe model will be trained k times seperating different bucket as test data.
-K-fold CV helps in training the model with all dataset available including the testing dataset.</p>
+<p><strong>Answer: </strong></p>
+<ul>
+<li>In k-fold cross-validation, <ul>
+<li>dataset is divided into k folds of equal size. </li>
+<li>then the model is trained k times by selecting one fold as testing set and remaining as training set each time with a different fold as testing set.</li>
+</ul>
+</li>
+</ul>
+<p><br>Average of test results from the k experiments gives the best result.</p>
+<ul>
+<li>K-fold CV helps in training the model with all dataset available including the testing dataset.</li>
+</ul>
 
 </div>
 </div>
@@ -14067,11 +14079,14 @@ Predicted selling price for Client 3&#39;s home: $931,636.36
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>
-<code>`Predicted selling price for Client 1's home: $403,025.00
-Predicted selling price for Client 2's home: $237,478.72
-Predicted selling price for Client 3's home: $931,636.36.</code>
-Yes, the prices are reasonable for these features.</p>
+<p><strong>Answer: </strong>`</p>
+<ul>
+<li>Predicted selling price for Client 1's home: \$403,025.00. Client 1 has house with 5 rooms, in a neighborhood with relatively good public schools and neighborhood with less poverty level compared to client 2.</li>
+<li>Predicted selling price for Client 2's home: $237,478.72. Client 2 has the smallest house, in a neighborhood with a relatively high poverty rate and not the best public schools and hence the price is less.</li>
+<li>Predicted selling price for Client 3's home: \$931,636.36. Client 3 has 8 rooms, 3 rooms higher than client 2, just 3\% poverty level in neighborhood and best public schools.
+`
+<br>Yes, the prices are reasonable for these features.</li>
+</ul>
 
 </div>
 </div>
@@ -14152,11 +14167,11 @@ Range in prices: $69,044.61
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>Inflation is important and has to be considered</li>
-<li>No</li>
-<li>Yes</li>
-<li>No</li>
-<li>No</li>
+<li>Prices in 1978 are no longer valid after 38 years. Inflation is important and prices might have changed depending the development of the cities</li>
+<li>No, number of rooms and poverty level are not at all sufficient. Type of house, furnishing level, age of house, area, other amenities like pool should be factored.</li>
+<li>Yes, since the difference in results across trials is very less, the model is quite robust.</li>
+<li>No. Urban city data is not applicable for the rural city as the real estate differs a lot and are more costly in urban areas.</li>
+<li>No, it is not fair to judge the price of house based of characteristics of neighborhood but this is also one factor among others which should be considered.</li>
 </ul>
 
 </div>
